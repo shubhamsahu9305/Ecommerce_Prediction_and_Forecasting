@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Ecommerce Prediction and Forecasting</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.bokeh.org/bokeh/release/bokeh-3.1.1.min.css" type="text/css" />
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.1.1.min.js"></script>
+
+    <style>
+        body {
+              background-color: #CDE8E5;
+              }
+        .button-inactive {
+                  background-color: #092635;
+                  color: white;
+                  padding: 11px 25px;
+                  text-align: center;
+                  text-decoration: none;
+                  display: inline-block;
+                  margin: 4px 4px;
+                  font-size:13px;
+                  font-family:cursive;
+                  cursor: pointer;
+                  border-radius: 5px;
+                  border-bottom-style: solid;
+                  transition-duration: 0.4s;
+                  border-bottom-color: #D8D8D8;
+                  border-bottom-width: 1px;
+                  border-bottom-right-radius: 0px;
+                  border-bottom-left-radius: 0px;
+                }
+        .button-inactive:hover {
+                  background-color: #D8D8D8;
+                  color: black;
+                 }
+        .button-active {
+                  background-color: #D8D8D8;
+                  color: black;
+                  padding: 11px 25px;
+                  text-align: center;
+                  text-decoration: none;
+                  display: inline-block;
+                  margin: 4px 4px;
+                  cursor: pointer;
+                  border-radius: 5px;
+                  font-size:13px;
+                  font-family:cursive;
+                  border-bottom-color: #D8D8D8;
+                  border-bottom-width: 1px;
+                  border-bottom-right-radius: 0px;
+                  border-bottom-left-radius: 0px;
+                }
+        .center {
+                  display: block;
+                  margin-left: 25px;
+                  margin-right: auto;
+                  width: 40%;
+                  margin-top: 40px;
+                }
+    </style>
+</head>
+<body>
+
+<nav class="navbar" style="background-color: #092635;">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="color:white; font-family:cursive;" href="https://www.flipkart.com/">
+      <img src="{{url_for('static', filename='icon3.png')}}" alt="Logo" width="40" height="35" class="d-inline-block align-text-top">
+      S-ANALYTICS
+    </a>
+      <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="button-inactive" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="button-active" href="/forecast">REVENUE AND INCOME FORCASTING</a>
+            </li>
+            <li class="nav-item">
+              <a class="button-inactive" href="/sales_prediction">SALES PREDICTION</a>
+            </li>
+          <li class="nav-item">
+              <a class="button-inactive" href="/churn_prediction">CHURN PREDICTION</a>
+            </li>
+          <li class="nav-item">
+              <a class="button-inactive" href="/cust_segmentation">CUSTOMER SEGMENTATION</a>
+            </li>
+      </ul>
+  </div>
+</nav>
+<div style="background-color: #4F9E9B; width: 100%; height: 200px;">
+<div class="row" style="margin-left:auto; margin-right:auto;">
+<form action="/forecast_output" method="post" class="row g-3">
+  <div class="col" style="padding-left:20px">
+    <input type="text" readonly class="form-control-plaintext"
+           style="height: 3rem; text-align:centre; font-family:cursive; font-size:23px;"
+           value="FORECAST PERIOD (IN QUARTERS)">
+  </div>
+  <div class="col">
+    <input type="number" min="1" class="form-control" style="height: 3rem;"
+           placeholder="Enter a Number" name="user_input" required>
+  </div>
+  <div class="col">
+    <button type="submit" class="btn btn-primary mb-3" style="height: 3rem; width:10rem;
+    background-color: #fcbf49; border-color: #807C7D; font-size:20px; font-family:cursive; color:black;">Forecast</button>
+      <a class="btn btn-primary mb-3" style="height: 3rem; width:10rem;
+        background-color: #BFC0C0; border-color: #807C7D; font-size:18px;
+        font-family:cursive; color:black; padding-top: 10px" href="/forecast">RESET PLOT</a>
+  </div>
+
+</form>
+
+</div>
+<div style="margin-left: 30px">
+    {{ script|safe }}
+    {{ div|safe }}
+</div>
+</div>
+
+</body>
+</html>
